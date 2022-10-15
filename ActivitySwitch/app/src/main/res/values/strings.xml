@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MyFirstApplication</string>
+    <string name="say_hello">Say Hello!</string>
+    <string name="nameText">Name</string>
+    <string name="lmsWebsite">lms.hse.ru</string>
+    <string name="searchWebsite">google.com</string>
+    <string name="useCuriosityWebsite">userinyerface.com</string>
+</resources>
