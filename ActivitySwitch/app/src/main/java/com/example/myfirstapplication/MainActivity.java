@@ -42,8 +42,6 @@ public class MainActivity extends AppCompatActivity {
             if (intent.resolveActivity(getApplicationContext().getPackageManager()) == null) {
                 Toast.makeText(getApplicationContext(), "No suitable intent", Toast.LENGTH_LONG).show();
             } else {
-                Toast.makeText(getApplicationContext(), "Your data was saved.",
-                        Toast.LENGTH_LONG).show();
                 startActivity(intent);
             }
         }
