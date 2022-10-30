@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Смена конфигурации системы</string>
+    <string name="text_out">Насладитесь красотой природы. Измените яркость!</string>
+    <string name="orientation_change_info_landscape">Ориентация была изменена на альбомную</string>
+    <string name="orientation_change_info_portrait">Ориентация была изменена на портретную</string>
+    <string name="brightness">Яркость</string>
+    <string name="text_input">Введите текст</string>
+    <string name="quitting">Выход. Вы уверены?</string>
+    <string name="quit_agree">Агась</string>
+    <string name="quit_disagree">Не-а</string>
+    <string name="arrow">Указатель</string>
+    <string name="power_connected">Зарядное устройство подключено</string>
+    <string name="power_disconnected">Зарядное устройство отключено</string>
+</resources>

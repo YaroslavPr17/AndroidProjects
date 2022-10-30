@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ConfigChangesDemo</string>
+    <string name="text_out">Enjoy nature. Just change brightness</string>
+    <string name="orientation_change_info_landscape">Orientation was changed to landscape</string>
+    <string name="orientation_change_info_portrait">Orientation was changed to portrait</string>
+    <string name="brightness">Brightness</string>
+    <string name="text_input">Type something</string>
+    <string name="quitting">Quitting. Are you sure?</string>
+    <string name="quit_agree">Yep.</string>
+    <string name="quit_disagree">Nooo</string>
+    <string name="arrow">arrow</string>
+    <string name="power_connected">Power connected</string>
+    <string name="power_disconnected">Power disconnected</string>
+
+</resources>
