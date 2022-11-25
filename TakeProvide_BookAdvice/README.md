@@ -6,4 +6,4 @@
 
 Состоит из 2х Android-приложений: 
 * **BookAdviser** - создание базы данных и управление.
-* **AdviseListener** - некоторые функции, заимстованные у BookAdviser.
+* **AdviseListener** - некоторые функции, заимствованные у BookAdviser.
