@@ -5,7 +5,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.ContentResolver;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -38,47 +40,61 @@ public class ShowQueryActivity extends AppCompatActivity {
 
         contentResolver = getContentResolver();
 
-        Cursor cursor = contentResolver.query(BookAdviseProviderContract.BOOK_ALL_ROWS_URI,
-                new String[]{"COUNT(*)"},
-                "title LIKE ? AND language LIKE ?",
-                new String[]{"%a%", "%rus%"},
-                null);
-        cursor.moveToFirst();
-        number.setText(String.valueOf(cursor.getInt(0)));
-        cursor.close();
+        try {
+            Cursor cursor = contentResolver.query(BookAdviseProviderContract.BOOK_ALL_ROWS_URI,
+                    new String[]{"COUNT(*)"},
+                    "title LIKE ? AND language LIKE ?",
+                    new String[]{"%a%", "%rus%"},
+                    null);
+            cursor.moveToFirst();
+            number.setText(String.valueOf(cursor.getInt(0)));
+            cursor.close();
 
-        Cursor cursor1 = contentResolver.query(BookAdviseProviderContract.BOOK_ALL_ROWS_URI,
-                new String[]{"*"},
-                "title LIKE ? AND language LIKE ?",
-                new String[]{"%a%", "%rus%"},
-                null);
-        cursor1.moveToFirst();
+            Cursor bookCursor = contentResolver.query(BookAdviseProviderContract.BOOK_ALL_ROWS_URI,
+                    new String[]{"*"},
+                    "title LIKE ? AND language LIKE ?",
+                    new String[]{"%a%", "%rus%"},
+                    null);
+            bookCursor.moveToFirst();
 
-        List<Book> books = new ArrayList<>();
+            List<Book> books = new ArrayList<>();
 
-//        System.out.println("INDEX = " + cursor1.get getColumnIndex("language"));
+            while (!bookCursor.isAfterLast()){
+                Book b = new Book();
+                b.setTitle(bookCursor.getString(bookCursor.getColumnIndex("title")));
+                b.setPublisher(bookCursor.getString(bookCursor.getColumnIndex("publisher")));
+                b.setLanguage(bookCursor.getString(bookCursor.getColumnIndex("language")));
+                b.setCreationYear(bookCursor.getString(bookCursor.getColumnIndex("creationYear")));
+                b.setPublicationYear(bookCursor.getString(bookCursor.getColumnIndex("publicationYear")));
+                b.setAuthorName(bookCursor.getString(bookCursor.getColumnIndex("authorName")));
+                b.setAuthorSurname(bookCursor.getString(bookCursor.getColumnIndex("authorSurname")));
 
+                books.add(b);
+                bookCursor.moveToNext();
+            }
 
-        while (!cursor1.isAfterLast()){
-            Book b = new Book();
-            b.setTitle(cursor1.getString(cursor1.getColumnIndex("title")));
-            b.setPublisher(cursor1.getString(cursor1.getColumnIndex("publisher")));
-            b.setLanguage(cursor1.getString(cursor1.getColumnIndex("language")));
-            b.setCreationYear(cursor1.getString(cursor1.getColumnIndex("creationYear")));
-            b.setPublicationYear(cursor1.getString(cursor1.getColumnIndex("publicationYear")));
-            b.setAuthorName(cursor1.getString(cursor1.getColumnIndex("authorName")));
-            b.setAuthorSurname(cursor1.getString(cursor1.getColumnIndex("authorSurname")));
+            recyclerView.setAdapter(new ResultRecyclerAdapter(getApplicationContext(), books));
 
-            books.add(b);
-            cursor1.moveToNext();
+            bookCursor.close();
+
         }
-
-        System.out.println("BOOKS: " + books);
-
-        recyclerView.setAdapter(new ResultRecyclerAdapter(getApplicationContext(), books) );
-
-        cursor1.close();
-
-
+        catch (IllegalArgumentException | NullPointerException npe){
+            openQuitDialogBecauseOfNoDB();
+        }
     }
+
+    private void openQuitDialogBecauseOfNoDB() {
+        AlertDialog.Builder quitDialog = new AlertDialog.Builder(this);
+        quitDialog.setTitle(R.string.database_not_exist);
+
+        quitDialog.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+
+        quitDialog.show();
+    }
+
 }

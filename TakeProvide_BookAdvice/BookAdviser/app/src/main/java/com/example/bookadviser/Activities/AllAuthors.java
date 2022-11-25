@@ -34,7 +34,6 @@ public class AllAuthors extends AppCompatActivity {
         setContentView(R.layout.activity_all_authors);
 
 //        Bundle arguments = getIntent().getExtras();
-//        System.out.println(arguments);
 //        if(arguments!=null){
 //            db = (AppDatabase)arguments.get("Database");
 //        }

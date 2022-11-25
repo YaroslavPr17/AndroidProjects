@@ -2,14 +2,14 @@ package com.example.adviselistener.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.ContentValues;
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.adviselistener.BookAdviseProviderContract;
 import com.example.adviselistener.R;
@@ -54,66 +54,29 @@ public class AddBookActivity extends AppCompatActivity {
         contentValues.put("publisher", publisher_field.getText().toString().trim());
         contentValues.put("creationYear", creationYear_field.getText().toString().trim());
 
-        cr.insert(BookAdviseProviderContract.BOOK_ALL_ROWS_URI, contentValues);
-        this.finish();
-    }
-
-    public static class MainActivity extends AppCompatActivity {
-
-        Button btnAddBook, btnShowQuery, btnDeleteBook;
-
-
-        ContentResolver cr;
-
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-
-
-            btnAddBook = findViewById(R.id.buttonAddBook);
-            btnDeleteBook = findViewById(R.id.buttonRemoveBook);
-            btnShowQuery = findViewById(R.id.buttonShowQuery);
-
-            btnAddBook.setOnClickListener(this::onAddBookClick);
-            btnDeleteBook.setOnClickListener(this::onDeleteBookClick);
-            btnShowQuery.setOnClickListener(this::onShowQueryClick);
-
+        try {
+            cr.insert(BookAdviseProviderContract.BOOK_ALL_ROWS_URI, contentValues);
+            this.finish();
         }
-
-        private void onAddBookClick(View view) {
-            Intent intent;
-            intent = new Intent("ru.book-adviser.intent.action.add-book-activity");
-
-            if (intent.resolveActivity(getApplicationContext().getPackageManager()) == null) {
-                Toast.makeText(getApplicationContext(), "No suitable intent", Toast.LENGTH_LONG).show();
-            } else {
-                startActivity(intent);
-            }
-        }
-
-        private void onDeleteBookClick(View view) {
-            Intent intent;
-            intent = new Intent("ru.book-adviser.intent.action.delete-book-activity");
-
-            if (intent.resolveActivity(getApplicationContext().getPackageManager()) == null) {
-                Toast.makeText(getApplicationContext(), "No suitable intent", Toast.LENGTH_LONG).show();
-            } else {
-                startActivity(intent);
-            }
-        }
-
-        private void onShowQueryClick(View view) {
-            Intent intent;
-            intent = new Intent("ru.book-adviser.intent.action.show-query-activity");
-
-            if (intent.resolveActivity(getApplicationContext().getPackageManager()) == null) {
-                Toast.makeText(getApplicationContext(), "No suitable intent", Toast.LENGTH_LONG).show();
-            } else {
-                startActivity(intent);
-            }
+        catch (IllegalArgumentException iae){
+             openQuitDialog();
         }
 
 
     }
+
+    private void openQuitDialog() {
+        AlertDialog.Builder quitDialog = new AlertDialog.Builder(this);
+        quitDialog.setTitle(R.string.database_not_exist);
+
+        quitDialog.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+
+        quitDialog.show();
+    }
+
 }

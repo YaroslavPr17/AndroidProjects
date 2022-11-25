@@ -13,8 +13,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.PipedOutputStream;
-import java.io.Serializable;
 import java.util.List;
 
 public class ResultRecyclerAdapter extends RecyclerView.Adapter<ResultRecyclerAdapter.ResultViewholder> {
@@ -36,10 +34,7 @@ public class ResultRecyclerAdapter extends RecyclerView.Adapter<ResultRecyclerAd
 
     @Override
     public void onBindViewHolder(@NonNull ResultRecyclerAdapter.ResultViewholder holder, int position) {
-        System.out.println("IN BIND");
-        System.out.println("POSITION = " + position);
         Book b = bookList.get(position);
-        System.out.println("TITLE = " + b.getTitle());
 
         holder.bookTitleTextView.setText(b.getTitle());
         holder.bookLanguageTextView.setText(b.getLanguage());

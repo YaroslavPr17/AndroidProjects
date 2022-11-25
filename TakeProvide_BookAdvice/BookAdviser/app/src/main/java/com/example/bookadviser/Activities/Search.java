@@ -198,8 +198,6 @@ public class Search extends AppCompatActivity implements Constants {
                 relationParamBook
         );
 
-        System.out.println("BOOK_TITLE = " + bookTitle);
-
         Intent intent = new Intent("ru.book-adviser.intent.action.show_search_results");
         intent.putExtra("Results", (Serializable) results);
         if (intent.resolveActivity(getApplicationContext().getPackageManager()) == null) {

@@ -2,7 +2,9 @@ package com.example.adviselistener.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.ContentResolver;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -47,11 +49,33 @@ public class RemoveDeleteBookByNameActivity extends AppCompatActivity {
             return;
         }
 
-        cr.delete(BookAdviseProviderContract.BOOK_ALL_ROWS_URI,
-                null,
-                new String[]{bookTitle.getText().toString().trim(),
-                        bookCreationYear.getText().toString().trim()});
+        try {
+            cr.delete(BookAdviseProviderContract.BOOK_ALL_ROWS_URI,
+                    null,
+                    new String[]{bookTitle.getText().toString().trim(),
+                            bookCreationYear.getText().toString().trim()});
 
-        this.finish();
+            this.finish();
+        }
+        catch (IllegalArgumentException iae){
+            openQuitDialog();
+        }
+
+
     }
+
+    private void openQuitDialog() {
+        AlertDialog.Builder quitDialog = new AlertDialog.Builder(this);
+        quitDialog.setTitle(R.string.database_not_exist);
+
+        quitDialog.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+
+        quitDialog.show();
+    }
+
 }

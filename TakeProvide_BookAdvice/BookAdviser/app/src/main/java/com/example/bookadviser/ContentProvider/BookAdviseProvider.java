@@ -65,19 +65,9 @@ public class BookAdviseProvider extends ContentProvider {
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection,
                         @Nullable String[] selectionArgs, @Nullable String sort) {
 
-        System.out.println("QUERY WAS SUCCESSFULLY CALLED");
-
-        System.out.println(Arrays.toString(projection));
-        System.out.println(selection);
-        System.out.println(Arrays.toString(selectionArgs));
-        System.out.println(sort);
-
         SupportSQLiteQueryBuilder sSQL = SupportSQLiteQueryBuilder.builder("Book");
         sSQL.columns(projection);
         sSQL.selection(selection, selectionArgs);
-
-        System.out.println(sSQL.create().getSql());
-
 
         return db.query(sSQL.create());
     }

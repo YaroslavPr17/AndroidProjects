@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">AdviseListener</string>
+
+    <string name="database_not_exist">Database doesn\'t exist.</string>
+    <string name="yes">OK</string>
 </resources>
