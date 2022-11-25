@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">BookAdviser</string>
+    <string name="btn_authors">All authors</string>
+    <string name="btn_books">All books</string>
+    <string name="btn_publishers">All publishers</string>
+    <string name="btn_search">Search…</string>
+    <string name="btn_filter">Filter</string>
+    <string name="btn_add_author">Add author</string>
+    <string name="btn_add_book">Add book</string>
+    <string name="btn_add_publisher">Add publisher</string>
+    <string name="no_search_results">No search results. Return to search parameters?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="available_online">Available online!</string>
+    <string name="not_entered_book_creation_year_relation">You haven\'t entered book creation year parameter</string>
+    <string name="sure_to_delete_author_permanently">Are you sure to remove author permanently?</string>
+    <string name="stay_in_editing_mode">OK. Now in editing mode…</string>
+    <string name="author_removed_successfully">Author removed successfully!</string>
+    <string name="instruction_to_remove_author">To remove author press and hold Edit-button</string>
+</resources>
