@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AlbumVkGetter</string>
+    <string name="access_token_exists">Токен доступа активен</string>
+    <string name="enter_id">Введите id пользователя</string>
+    <string name="show_albums">Показать список альбомов</string>
+    <string name="no_access">У Вас нет доступа к альбомам этого пользователя</string>
+    <string name="no_access_agree">OK</string>
+    <string name="no_internet">Нет подключения к сети</string>
+    <string name="no_internet_agree">OK</string>
+    <string name="no_albums">"Похоже, что %s %s не добавил ни одного альбома.\n :(\n Вернитесь на предыдущую страницу, чтобы искать больше"</string>
+</resources>
