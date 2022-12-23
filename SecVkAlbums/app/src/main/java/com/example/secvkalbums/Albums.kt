@@ -45,7 +45,6 @@ class Albums : AppCompatActivity() {
             },
             {
                 Toast.makeText(this, "Unable to get albums", Toast.LENGTH_LONG).show()
-                // openNoInternetAccessDialog()
             })
 
         queue.add(jsonObjectRequest)

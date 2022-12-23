@@ -21,14 +21,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val textView: TextView = findViewById(R.id.accessTokenExists)
         btGetAlbums = findViewById(R.id.btGetAlbums)
         etEnterId = findViewById(R.id.etEnterId)
-
-        val ACCESS_TOKEN =
-            "vk1.a.G3_AhHzV_y3P6XVTyOzSbMdU71qyxjrGapYtjA0KKfs5tKUhM9BlQiW_7jc8NZwXmRvBdwnlV0mUAx3PsXYbu0CJ0AiuYSooiCIRyfaJYBum7fV2CGhPvgyyIUBdjzVwo8lYbvwi00zgi0fOT83uad-daDvb-hQfcTrTOyKIHBZMnbziKkd1rx0XDUoLeBbm"
-        val API_VERSION = "5.131"
-        val USER_ID = "205527111"
 
         btGetAlbums!!.setOnClickListener {
 

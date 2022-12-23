@@ -26,7 +26,7 @@
         android:ems="10"
         android:hint="@string/enter_id"
         android:inputType="number"
-        android:text="182375022"
+        android:text="51663629"
         android:textColorHint="#78909C"
         app:layout_constraintBottom_toTopOf="@+id/btGetAlbums"
         app:layout_constraintEnd_toEndOf="parent"
