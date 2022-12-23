@@ -1,6 +1,6 @@
 package com.example.secvkalbums
 
-val ACCESS_TOKEN = "vk1.a.0a64VLLwFpZ4IKiQcblbosp_rawnBJ6ad849zTpQccWD9yX5-8tRniskxrqIiVhDarqLepdCMIOu8hBhYSjAqtcZ8kqiDuHMasAoU0U_Ybkc59d2YAKJspcJRiNnxb6FOfYHPPPCusNY-72lFQiguGxMZ9QUBTDnWYSqeY4IMn9Ah88lvMqSe23Sft48n6u2"
+val ACCESS_TOKEN = "...Y4IMn9Ah88l2..." // Broken to keep privacy
 val API_VERSION = "5.131"
 
 fun getRequestUserInfo (userId : String, accessToken: String = ACCESS_TOKEN, apiVersion: String = API_VERSION) : String =
